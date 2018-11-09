@@ -109,25 +109,7 @@ paths:
           description: Authorization
           required: true
           type: string
-          default: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb25OdW1iZXIiOiI5MTg3MTM4NjciLCJpc3MiOiJ2aXBwcy5ubyIsImV4cCI6MTY0NDc0Mzg5NywiYWNjb3VudE51bWJlciI6IjE4MDAwMDAwMDAwIn0.mqO4RsidM_-twRfCvgNnXUUPrXaTgFVMvkJTVmJgtmbHziMVxHnG9moHpEj90_A3MRPp_jucdgMnqixgExOykJCLX6VsiUB0qMLXTgBE7Mmkz3lk0jCgv7OwYDJuLksrXvLepD68KdyDTCVwPxdgqh_H9Tea7S3gSYUnYoNkNP5h7Eyvai6U7BuJVcoE5ckO1ZjGmOvNlfHUbAZYBH8I5RV96bnmEtdtkojrkoZtT7HjueyTZODfdaOyvI5VfMLKbr9qGkYKP0UBKTp9ST5eV-W_Y062PgOsfRNXL2-ltKgn0vDkpUWYGiA8Y98ondXLF1kQIc8pAFPAwhzWG31oM_wKeOjjjK-2lMg1X1LjTk-zbq0HBilhQzbXdW0PHws0p1UZgviW-bdIwRfcjn1ysEqzS0HzDuaRTGIQDeld3MrtcwLLce7PT4rSGZeoJM-pUTidztzX48pFUixLm-aa1-SWnbRIqUufmsylSJNZXjgS06pISGUMKPiAdSjINY17x8YkeptS1B_r56oshRY8BFffCPxtMJI1BAWYQBCQ8WvUadlWNrQ477kUuvauEPRK_eyXT83cANaEa39lBPz4J3PHAE6grV4c3G_rClFzaFl1mzrhUABKJ3CpP_q7LmkboXSI5xx0BkyIb4wG_eG1s7_E_P_T0hIj3CTBNZnu7mI
-        - name: MERCHANT-SERIAL-NUMBER
-          in: header
-          description: Identifies a merchant sales channel
-          required: true
-          type: string
-          default: '12345'
-        - name: Ocp-Apim-Subscription-Key
-          in: header
-          description: Subscription key for eCommerce product. This can be found in User Profile page on Merchant developer portal after merchant account is created
-          required: true
-          type: string
-          default: c1b1a8846ec56d09db39bd3b5403bf9
-        - name: PSP-ID
-          in: header
-          description: PSP ID as defined during PSP enrollment. PSP should share a public key to encrypt the card data from TSP via Vipps
-          required: true
-          type: string
-          default: C948DFD1546347568874C4DDC93A2E3C
+          default: Bearer ynuiu
         - in: body
           name: makePaymentRequest
           description: makePaymentRequest
@@ -545,11 +527,10 @@ definitions:
         description: Encrypted credit card details
       confirmed:
         type: string
-        example: YES/NO/TIMEOUT/CANCEL
+        example: YES/TIMEOUT/CANCEL
         description: Credit Card Details Encryption Status
         enum:
           - 'YES'
-          - 'NO'
           - TIMEOUT
           - CANCEL
     title: MakePaymentRequestPSPV2
