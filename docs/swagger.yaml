@@ -4,6 +4,12 @@ info:
     The Vipps PSP API gives the PSP ability to process Vipps payment as a part of their payment offerings. By using the PSP API, PSP’s still have full transactional control for payments initiated in their payment terminals.
 
     The Vipps PSP API allows PSP’s to initiate payments for end users to accept with the Vipps mobile app. After the customer confirms the payment, Vipps enrich payment data with encrypted credit card details and hand over payment processing to PSP
+
+    For more details about or existing Recurring functionality please see
+
+    https://vippsas.github.io/vipps-recurring-api/
+
+
   version: '1.0'
   title: PSP API V2
 host: 'localhost:8090'
@@ -276,6 +282,11 @@ paths:
           description: The applicable merchant serial number currently being represented
           required: true
           type: string
+        - name: PSP-ID
+          in: header
+          description: PSP-ID
+          required: true
+          type: string
         - in: body
           name: draftAgreement
           description: draftAgreement
@@ -336,6 +347,11 @@ paths:
           description: The agreement identifier (id)
           required: true
           type: string
+        - name: PSP-ID
+          in: header
+          description: PSP-ID
+          required: true
+          type: string
         - name: chargeStatus
           in: query
           description: The status of the charge
@@ -391,6 +407,11 @@ paths:
         - name: Authorization
           in: header
           description: Bearer 'auth token'
+          required: true
+          type: string
+        - name: PSP-ID
+          in: header
+          description: PSP-ID
           required: true
           type: string
         - name: Idempotent-Key
@@ -543,10 +564,6 @@ definitions:
   PSPInitiatePaymentRequestV2DTO:
     type: object
     properties:
-      merchantSerialNumber:
-        type: string
-      pspId:
-        type: string
       pspTransactionId:
         type: string
         example: 7686f7788898767977
@@ -555,23 +572,6 @@ definitions:
         type: string
         example: 8874C4DDC93A2E3C
         description: Uniquely identifies a payment order for a merchant
-      customerMobileNumber:
-        type: string
-        example: 92929292
-        description: Mobile number of the user who has to pay for the transaction from Vipps
-      amount:
-        type: integer
-        format: int32
-        example: 100
-        description: Amount should be specified in Øre. 100 Øre conversion 1.00 NOK
-      currency:
-        type: string
-        example: NOK
-        description: ISO 4217 defined currency code. Currently Vipps only supports NOK
-      pspRedirectUrl:
-        type: string
-        example: 'https://psp.vipps.io'
-        description: Vipps will use this URL to redirect end user after payment confirmation
       makePaymentUrl:
         type: string
         example: 'https://psp.vipps.io'
@@ -580,14 +580,6 @@ definitions:
         type: string
         example: ynuiu
         description: Authorization header for MakePayment call
-      paymentText:
-        type: string
-        example: 'Order id :'
-        description: Text to be displayed to end user
-      isApp:
-        type: boolean
-        example: true
-        description: Indicates whether payment request is triggered from Mobile App or Web browser
     title: PSPInitiatePaymentRequestV2DTO
   PSPPaymentDetailsRepresentation:
     type: object
@@ -870,7 +862,7 @@ definitions:
         format: int32
         example: 5
         description: 'The service will attempt to charge the customer for N days [non inclusive], must be null or contain a value >= 0. If zero, no retries will be performed'
-      initPayment:
+      pspPaymentDetails:
         $ref: '#/definitions/PSPInitiatePaymentRequestV2DTO'
     title: CreateCharge
   DraftAgreement:
@@ -895,8 +887,6 @@ definitions:
         type: string
         example: '+4740000000'
         description: Customers phone number (if available). Used to simplify the following Vipps interaction
-      initialCharge:
-        $ref: '#/definitions/InitialCharge'
       interval:
         type: string
         example: WEEK
@@ -927,8 +917,6 @@ definitions:
         type: string
         example: 'https://api.merchant.no/landing'
         description: URL where customer should be redirected after the agreement has been approved/rejected in the Vipps mobile application.
-      oneOffCharge:
-        $ref: '#/definitions/OneOffCharge'
       price:
         type: integer
         format: int32
@@ -941,6 +929,14 @@ definitions:
         type: string
         example: Pluss-abonnement
         description: Name of the product being subscribed to.
+      pspAgreementId:
+        type: string
+        example: eyJhbGciOiJSU
+        description: ID for PSP.
+      oneOffCharge:
+        $ref: '#/definitions/OneOffCharge'
+      initialCharge:
+        $ref: '#/definitions/InitialCharge'
     title: DraftAgreement
   DraftAgreementResponse:
     type: object
@@ -955,6 +951,10 @@ definitions:
         example: 'https://api.vipps.no/api/v1/register/U6JUjQXq8HQmmV'
         description: Customer should be redirected to Vipps using this URL.
         readOnly: true
+      pspAgreementId:
+        type: string
+        example: eyJhbGciOiJSU
+        description: ID for PSP.
     title: DraftAgreementResponse
   FieldErrorDto:
     type: object
