@@ -760,6 +760,7 @@ definitions:
       - dueDate
       - id
       - status
+      - pspTransactionId
     properties:
       amount:
         type: integer
@@ -784,6 +785,10 @@ definitions:
         type: string
         example: chg_WCVbcAbRCmu2zk
         description: 'Unique identifier for this charge, up to 15 characters.'
+      pspTransactionId:
+        type: string
+        example: 7686f7788898767977
+        description: 'Unique identifier sent by the PSP.'
       status:
         type: string
         example: PENDING
@@ -913,7 +918,7 @@ definitions:
       pspAgreementId:
         type: string
         example: eyJhbGciOiJSU
-        description: ID for PSP.
+        description: ID for PSP agreement, optional field.
       oneOffCharge:
         $ref: '#/definitions/OneOffCharge'
       initialCharge:
