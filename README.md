@@ -47,7 +47,7 @@ Agreements can be initiated with initial charges and/or one-time amounts
 | 2 | `Agreement starting in future`  | Agreement without an `initialcharge` can be approved but no payment will happen until the first charge is provided |
 | 3 | `Agreement with additional one-time amount`  | Agreement with an `oneOffCharge` will make an separate payment request together with the agreement approval to pay an additional amount. Can be used with or without an `initialcharge` |
 
-**Initial charge**
+**Initial charge**\
 Initial charge will be performed if the `initialcharge` is provided when creating an agreement. The `amount` has to correspond to the `price` of the agreement.
 
 ```
@@ -58,7 +58,7 @@ Initial charge will be performed if the `initialcharge` is provided when creatin
 },
 ```
 
-**One-time amount**
+**One-time amount**\
 An agreement can be created with an additional payment amount with the `oneOffCharge`
 
 ```
