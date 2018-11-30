@@ -49,6 +49,7 @@ Agreements can be initiated with initial charges and/or one-time amounts
 
 **Initial charge**
 Initial charge will be performed if the `initialcharge` is provided when creating an agreement. The `amount` has to correspond to the `price` of the agreement.
+
 ```
 "initialCharge": {
   "amount": 135,
@@ -59,6 +60,7 @@ Initial charge will be performed if the `initialcharge` is provided when creatin
 
 **One-time amount**
 An agreement can be created with an additional payment amount with the `oneOffCharge`
+
 ```
 "oneOffCharge": {
   "amount": 330,
