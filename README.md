@@ -135,8 +135,8 @@ Manage charges and agreement
 A campaign in recurring is a period where the price is lower than usual, and this is communicated to the customer with the original price shown for comparison.
 
 As seen in the following
-[Campaign image](images/CampaignExample.PNG)
-<img src="images/CampaignExample.PNG" width="185">
+[Campaign image](CampaignExample.PNG)
+<img src="CampaignExample.PNG" width="185">
 
 In order to start a campaign the campaign field has to be added either to the agreement [`POST:/draftAgreement`](https://) for a campaign in the start of an agreement or in a charge [`POST:/charge/{agreementId}`](https://) for an ongoing agreement.
 ```
