@@ -6,7 +6,7 @@ Vipps Recurring API delivers recurring payment functionality for a merchant to c
 
 | Term |  Description                                    |
 |:-----|:----------------------------------------------- |
-| Agreement         | An agreement to a subscription with a set of conditions that a end user agrees to  |
+| Agreement         | An payment subscription with a set of parameters that a customer agrees to  |
 | Charge         | A single payment within an agreement |
 | Idempotency | The property of endpoints to be called multiple times without changing the result beyond the initial application. |
 
