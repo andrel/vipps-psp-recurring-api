@@ -39,6 +39,19 @@ The following code illustrates how to create an agreement:
 }
 ```
 
+**Intervals**\
+Intervals are defined with a interval type `YEAR`, `MONTH`, `WEEK`, or `DAY` and frequency as a count.\
+Example for a bi-weekly subscription:
+```
+"interval": "WEEK",
+"intervalCount": 2,
+```
+Example for a quarterly subscription
+```
+"interval": "MONTH",
+"intervalCount": 4,
+```
+
 Agreements can be initiated with initial charges and/or one-time amounts
 
 | # | Agreement      | Description                                                                          |
@@ -46,6 +59,8 @@ Agreements can be initiated with initial charges and/or one-time amounts
 | 1 | `Agreement starting now`  | Agreement with an `initialcharge` will only be `active` if the initial charge is processed successfully |
 | 2 | `Agreement starting in future`  | Agreement without an `initialcharge` can be approved but no payment will happen until the first charge is provided |
 | 3 | `Agreement with additional one-time amount`  | Agreement with an `oneOffCharge` will make an separate payment request together with the agreement approval to pay an additional amount. Can be used with or without an `initialcharge` |
+
+
 
 **Initial charge**\
 Initial charge will be performed if the `initialcharge` is provided when creating an agreement. The `amount` has to correspond to the `price` of the agreement.
@@ -134,7 +149,7 @@ Manage charges and agreement
 ## Campaigns
 A campaign in recurring is a period where the price is lower than usual, and this is communicated to the customer with the original price shown for comparison.
 
-<img src="CampaignExample.png" width="185">
+<img src="images/CampaignExample.PNG" width="185">
 
 In order to start a campaign the campaign field has to be added either to the agreement [`POST:/draftAgreement`](https://) for a campaign in the start of an agreement or in a charge [`POST:/charge/{agreementId}`](https://) for an ongoing agreement.
 ```
