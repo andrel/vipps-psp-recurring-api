@@ -1,0 +1,24 @@
+@startuml
+participant PSP
+participant VippsBackend
+participant VippsApp
+actor User
+
+PSP -> VippsBackend: Initiate payment: IsRecurring true
+VippsBackend -> VippsApp: Send Approval requests
+VippsApp -> User: Present first recurring paymentText
+User -> VippsApp: Approve
+VippsApp -> VippsBackend: Return approval
+VippsBackend -> VippsBackend: Save approval with recurringId
+
+VippsBackend -> PSP: Makepayment request with recurringId
+
+...
+
+PSP -> VippsBackend: Initiate payment with recurringId
+VippsBackend -> VippsBackend: Verify recurringId
+VippsBackend -> PSP: Makepayment request with recurringId
+
+
+
+@enduml
