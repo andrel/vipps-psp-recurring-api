@@ -1,3 +1,6 @@
+# Ignore readme until furter comment
+
+
 # Vipps PSP Recurring API
 
 Vipps Recurring API delivers recurring payment functionality for a merchant to create a payment agreement with a customer for fixed interval payments. When the agreement is accepted by the end user the merchant can send charges that will be automatically processed on the due date.
