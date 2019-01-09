@@ -4,20 +4,20 @@ participant VippsBackend
 participant VippsApp
 actor User
 
-PSP -> VippsBackend: Initiate payment: IsRecurring true
+PSP -> VippsBackend: Initiate payment: IsRecurring true on /init
 VippsBackend -> VippsApp: Send Approval requests
 VippsApp -> User: Present first recurring paymentText
 User -> VippsApp: Approve
 VippsApp -> VippsBackend: Return approval
-VippsBackend -> VippsBackend: Save approval with recurringId
+VippsBackend -> VippsBackend: Save approval with userToken
 
-VippsBackend -> PSP: Makepayment request with recurringId
+VippsBackend -> PSP: Makepayment request with userToken
 
 ...
 
-PSP -> VippsBackend: Initiate payment with recurringId
-VippsBackend -> VippsBackend: Verify recurringId
-VippsBackend -> PSP: Makepayment request with recurringId
+PSP -> VippsBackend: Initiate payment with userToken on /payment
+VippsBackend -> VippsBackend: Verify userToken
+VippsBackend -> PSP: Makepayment request with userToken
 
 
 
