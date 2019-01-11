@@ -4,7 +4,7 @@ participant VippsBackend
 participant VippsApp
 actor User
 
-PSP -> VippsBackend: Initiate payment: IsRecurring true on /init
+PSP -> VippsBackend: Initiate payment: scope: "subscription" or "oneclick" on /init
 VippsBackend -> VippsApp: Send Approval requests
 VippsApp -> User: Present first recurring paymentText
 User -> VippsApp: Approve
@@ -15,7 +15,7 @@ VippsBackend -> PSP: Makepayment request with userToken
 
 ...
 
-PSP -> VippsBackend: Initiate payment with userToken on /payment
+PSP -> VippsBackend: Initiate payment with userToken on /payments
 VippsBackend -> VippsBackend: Verify userToken
 VippsBackend -> PSP: Makepayment request with userToken
 

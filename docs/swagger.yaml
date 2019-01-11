@@ -102,7 +102,7 @@ paths:
         '504':
           description: Gateway Timeout
       deprecated: false
-  /v2/psppayments/payment:
+  /v2/psppayments/payments:
     post:
       tags:
         - Vipps PSP API
@@ -343,12 +343,11 @@ definitions:
   BaseErrorResult:
     type: object
     title: BaseErrorResult
-  Claims:
-    type: object
-    title: Claims
-    description: An optional set of claims for future payments you want to process with the usertoken. Current available claims are Recurringtype - Subscription or RecurringType - OneClick
-    example:
-      recurringType: ["Subscription", "OneClick"]
+  Scope:
+    type: string
+    title: Scope
+    description: A scope for future payments you want to process with the usertoken. Current available scopes are subscription or oneclick, limited to one.
+    example: "subscription"
   ErrorDetails:
     type: object
     properties:
@@ -493,8 +492,8 @@ definitions:
         type: boolean
         example: true
         description: Indicates whether payment request is triggered from Mobile App or Web browser
-      claims:
-        $ref: '#/definitions/Claims'
+      scope:
+        $ref: '#/definitions/Scope'
     title: InitiatePaymentRequest
   ProcessPaymentOnToken:
     type: object
@@ -507,10 +506,6 @@ definitions:
         type: string
         example: 8874C4DDC93A2E3C
         description: Uniquely identifies a payment order for a merchant
-      customerMobileNumber:
-        type: string
-        example: 92929292
-        description: Mobile number of the user who has to pay for the transaction from Vipps
       amount:
         type: integer
         format: int32
@@ -535,11 +530,7 @@ definitions:
       userToken:
         type: string
         example: 12345ab
-        description: Mandatory field. Returned in the makepayment call when the transaction provides claims. (For example recurring).
-      isApp:
-        type: boolean
-        example: true
-        description: Indicates whether payment request is triggered from Mobile App or Web browser
+        description: Mandatory field. Returned in the makepayment call when the transaction provides claims. (For example recurring). browser
     title: InitiatePaymentRequest
   PaymentDetailsRepresentation:
     type: object
@@ -552,6 +543,10 @@ definitions:
         type: string
         example: 56787837
         description: Uniquely identifies a payment order for a merchant
+      additionalInformation:
+        type: string
+        example: OneClick
+        description: This is an optional field that is added to a transaction if there is additional information present in a transaction, current possible values "Subscription", "OneClick"
       transactionSummary:
         $ref: '#/definitions/TransactionSummary'
       transactionLogHistory:
