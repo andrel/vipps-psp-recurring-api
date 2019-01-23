@@ -1,0 +1,26 @@
+@startuml
+participant PSP
+participant VippsBackend
+participant VippsApp
+actor User
+
+PSP -> VippsBackend: Initiate payment: scope: "subscription" or "oneclick" on /init
+VippsBackend -> VippsApp: Send Approval requests
+VippsApp -> User: Present first recurring paymentText
+User -> VippsApp: Approve
+VippsApp -> VippsBackend: Return approval
+VippsBackend -> VippsBackend: Save approval with userToken
+
+VippsBackend -> PSP: 200 OK Transaction Info
+
+VippsBackend -> PSP: Makepayment request with userToken
+
+...
+
+PSP -> VippsBackend: /Payments with userToken on /payments
+VippsBackend -> VippsBackend: Verify userToken
+VippsBackend -> PSP: 200 OK - Makepayment info with userToken
+
+
+
+@enduml
