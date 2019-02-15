@@ -1,5 +1,5 @@
 
-# Vipps PSP version 2 Recurring API
+# Vipps PSP Version 2 Recurring API
 
 This repository contains developer resources for the Vipps PSP Recurring API.
 
