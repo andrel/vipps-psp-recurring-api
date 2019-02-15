@@ -167,6 +167,60 @@ paths:
         '504':
           description: Gateway Timeout
       deprecated: false
+    delete:
+      tags:
+        - Vipps PSP API
+      summary: The details of PSP Payment
+      operationId: getPSPPaymentDetailsUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer JWT-TOKEN
+          required: true
+          type: string
+          default: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb25OdW1iZXIiOiI5MTg3MTM4NjciLCJpc3MiOiJ2aXBwcy5ubyIsImV4cCI6MTY0NDc0Mzg5NywiYWNjb3VudE51bWJlciI6IjE4MDAwMDAwMDAwIn0.mqO4RsidM_-twRfCvgNnXUUPrXaTgFVMvkJTVmJgtmbHziMVxHnG9moHpEj90_A3MRPp_jucdgMnqixgExOykJCLX6VsiUB0qMLXTgBE7Mmkz3lk0jCgv7OwYDJuLksrXvLepD68KdyDTCVwPxdgqh_H9Tea7S3gSYUnYoNkNP5h7Eyvai6U7BuJVcoE5ckO1ZjGmOvNlfHUbAZYBH8I5RV96bnmEtdtkojrkoZtT7HjueyTZODfdaOyvI5VfMLKbr9qGkYKP0UBKTp9ST5eV-W_Y062PgOsfRNXL2-ltKgn0vDkpUWYGiA8Y98ondXLF1kQIc8pAFPAwhzWG31oM_wKeOjjjK-2lMg1X1LjTk-zbq0HBilhQzbXdW0PHws0p1UZgviW-bdIwRfcjn1ysEqzS0HzDuaRTGIQDeld3MrtcwLLce7PT4rSGZeoJM-pUTidztzX48pFUixLm-aa1-SWnbRIqUufmsylSJNZXjgS06pISGUMKPiAdSjINY17x8YkeptS1B_r56oshRY8BFffCPxtMJI1BAWYQBCQ8WvUadlWNrQ477kUuvauEPRK_eyXT83cANaEa39lBPz4J3PHAE6grV4c3G_rClFzaFl1mzrhUABKJ3CpP_q7LmkboXSI5xx0BkyIb4wG_eG1s7_E_P_T0hIj3CTBNZnu7mI
+        - name: MERCHANT-SERIAL-NUMBER
+          in: header
+          description: Identifies a merchant
+          required: true
+          type: string
+          default: '123456'
+        - name: Ocp-Apim-Subscription-Key
+          in: header
+          description: Subscription key for the product. Can be found in Vipps developer portal
+          required: true
+          type: string
+          default: c1b1a8846ec56d09db39bd3b5403bf9
+        - name: PSP-ID
+          in: header
+          description: PSP ID as provided by Vipps
+          required: true
+          type: string
+          default: C948DFD1546347568874C4DDC93A2E3C
+        - in: body
+          name: DeletePaymentRequest
+          description: DeletePaymentRequest
+          required: true
+          schema:
+            $ref: '#/definitions/DeletePaymentRequest'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ErrorDetails'
+        '503':
+          description: Service unavailable
+        '504':
+          description: Gateway Timeout
+      deprecated: false
   [makePaymentUrl]:
     post:
       tags:
@@ -376,14 +430,6 @@ definitions:
         example: Refused by Issuer
         description: PSP native textual representation of the error
     title: ErrorMessage
-  GenericResponse:
-    type: object
-    properties:
-      responseInfo:
-        $ref: '#/definitions/ResponseInfo'
-      result:
-        type: object
-    title: GenericResponse
   PaymentInitiationRepresentation:
     type: object
     properties:
@@ -411,6 +457,8 @@ definitions:
         type: string
         example: 8874C4DDC93A2E3C
         description: Uniquely identifies a payment order for a merchant
+      makePayment:
+        $ref: '#/definitions/MakePaymentRequest'
     title: PaymentInitiationRepresentation
   MakePaymentRequest:
     type: object
@@ -440,6 +488,13 @@ definitions:
           - TIMEOUT
           - CANCEL
     title: MakePaymentRequest
+  DeletePaymentRequest:
+    type: object
+    properties:
+      userToken:
+        type: string
+        example: 12345ab
+        description: Optional field. Returned when the transaction provides user information (For example recurring).
   MakePaymentResponse:
     type: object
     properties:
@@ -494,6 +549,10 @@ definitions:
         description: Indicates whether payment request is triggered from Mobile App or Web browser
       scope:
         $ref: '#/definitions/Scope'
+      agreementUrl:
+        type: string
+        example: 'https://merchant.com/mypage/123'
+        description: Url that will link a payment agreement with a merchant's agreement terms or profile pages.
     title: InitiatePaymentRequest
   ProcessPaymentOnToken:
     type: object
