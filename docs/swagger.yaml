@@ -459,7 +459,7 @@ definitions:
         description: Uniquely identifies a payment order for a merchant
       makePayment:
         $ref: '#/definitions/MakePaymentRequest'
-    title: PaymentInitiationRepresentation
+    title: PaymenentTokenRepresentation
   MakePaymentRequest:
     type: object
     properties:
@@ -590,7 +590,7 @@ definitions:
         type: string
         example: 12345ab
         description: Mandatory field. Returned in the makepayment call when the transaction provides claims. (For example recurring). browser
-    title: InitiatePaymentRequest
+    title: ProcessPaymentOnToken
   PaymentDetailsRepresentation:
     type: object
     properties:
