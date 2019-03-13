@@ -199,9 +199,9 @@ In the same way as a normal, non-recurring PSPv2 payment, the PSP will receive a
 
 ## The userToken
 
-The user token is a token generated when the user has given a consent. This token is provided to the PSP in the makePayment callback when initialising or preforming a recurring payment.
+The user token is a token generated when the user has given a consent. This token is provided to the PSP in the makePayment callback when initializing or preforming a recurring payment.
 
-A *userToken* contains the *scope* of the consent, in the claim named *scope*. The token also includes various useful information.
+A *userToken* contains the *scope* of the consent, in the claim named *scope*. The token also includes various useful information
 
 ```json
 {
