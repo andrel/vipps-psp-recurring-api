@@ -206,7 +206,7 @@ The user token is a token generated when the user has given a consent. This toke
 
 A *userToken* contains the *scope* of the consent, in the claim named *scope*. The token also includes various useful information
 
-```json
+```
 {
   "sub" // agreement_id
   "aud" // audience (usually something like "https://vipps.no")
