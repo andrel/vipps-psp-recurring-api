@@ -2,7 +2,7 @@
 
 This repository contains developer resources for the Vipps PSP Recurring API.
 
-The Vipps PSP Recurring API enables the integration of recurring payments through a PSP, while making sure the PSP has total transactional control. The PSP recurring functionality is built as an extension to the already widely used PSPv2 API.
+The Vipps PSP Recurring API enables the integration of recurring payments for a PSP. The PSP recurring functionality is built as an extension to the already used PSPv2 API.
 
 Please see [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md) for information about API keys, product activation, etc.
 

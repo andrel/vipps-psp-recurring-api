@@ -6,7 +6,7 @@ websites and apps (P2M). Vipps på Nett offers merchants functionality to
 provide a solution where the end user only enters her Norwegian mobile number
 to retrieve a payment request in the Vipps app.
 
-In the Vipps app the end user selects a payment source to complete the payment
+In the Vipps app, the user selects a payment source to complete the payment
 request. Vipps initiates the payment transaction on the selected source and
 provide feedback to the PSP of the payment card selected.
 
@@ -38,23 +38,25 @@ See the [Vipps PSP API Checklist](vipps-psp-api-checklist.md) for details.
 
 ### Initiate payment
 
-A payment request is initiated by the PSP to the Vipps API after end user has
-request to pay with Vipps. Vipps creates the payment and returns a link to
-the Vipps landing page where end user can confirm the mobile number.
-Once user has confirmed number the payment can be considered initiated.
+A payment request is initiated by the PSP to the Vipps API after the user has
+request to pay with Vipps. Vipps then returns a link to
+the Vipps landing page where the user can confirm the mobile number.
+Once the user has confirmed the number, the payment can be considered initiated.
 
 ### Payment confirmation
 
-After payment initiation, Vipps sends push notification or redirects user to
-the Vipps app. End user verifies the Vipps profile by logging in to the Vipps
-app. In the Vipps app the end user can select payment source and confirm the amount.
+After payment initiation, Vipps sends a push notification or redirects the user to
+the Vipps app.  The user verifies the Vipps profile by logging in to the Vipps
+app. The app then displays the amount, and the user can confirm the payment.
+
 
 ### MakePayment
-Once the end user has confirmed the payment, Vipps shares the encrypted card
-details with the PSP to the makePaymentUrl. PSP tries to process the payment
+
+Once the user has confirmed the payment, Vipps shares the encrypted card
+details with the PSP trough the makePaymentUrl endpoint. The PSP processes the payment
 through the acquirer and responds to the makePayment-call with the payment
-request status. End user receives confirmation in Vipps app. Vipps redirects
-the end user to the redirectUrl provided during payment initiation.
+request status. The user receives confirmation in Vipps app. Vipps redirects
+the user to the redirectUrl provided during payment initiation.
 
 ## Example request
 
@@ -130,7 +132,7 @@ Note 93 is for when the makePayment request from Vipps contains the statuses CAN
 
 ### Status Updates
 
-To provide a consistent end user experience it is important that Vipps is notified by changes to the payment status when it is captured, cancelled or refunded. Vipps also provides an endpoint to check the payment status.
+To provide a consistent user experience it is important that Vipps is notified by changes to the payment status when it is captured, cancelled or refunded. Vipps also provides an endpoint to check the payment status.
 
 
 ## HTTP responses
@@ -161,6 +163,7 @@ This API returns the following HTTP statuses in the responses:
 | `makePaymentUrl` | Invalid makePaymentUrl                     |
 
 # Recurring PSP payments
+
 The PSP API supports recurring payments out of the box. This enables the PSP to perform recurring payments through Vipps, while retaining full transactional control. This has been built as an extension to the existing PSPv2 API, and no existing integrations will be affected, other than the possibility to initialize and preform recurring payments.
 
 ## Subscription and oneclick scopes
