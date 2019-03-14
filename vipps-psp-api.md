@@ -211,7 +211,6 @@ A *userToken* contains the *scope* of the consent, in the claim named *scope*. T
   "sub" // agreement_id
   "aud" // audience (usually something like "https://vipps.no")
   "iat" // issue_day_time
-  "name" // psp_name
   "scope"
 }
 ```
@@ -222,8 +221,13 @@ A *userToken* contains the *scope* of the consent, in the claim named *scope*. T
 After initialisation, the next payment can be made by passing your *userToken* to the */payments* endpoint as a header with the name *userToken*.
 
 ```json
-HEADER: 
-        userToken: "123abc"
+HEADER: "
+        Authorization: asd123
+        Ocp-Apim-Subscription-Key: asdf234
+        PSP-ID: sdf421
+        Meerchant-Serial-Number: dsdf322
+        UserToken: 123abc
+        "
 {
   "pspTransactionId": "123",
   "merchantOrderId": "123ABCD",
