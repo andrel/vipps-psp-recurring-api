@@ -137,9 +137,15 @@ paths:
           required: true
           type: string
           default: '123456'
+        - name: userToken
+          in: header
+          description: JWT-TOKEN
+          required: true
+          type: string
+          default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb25OdW1iZXIiOiI5MTg3MTM4NjciLCJpc3MiOiJ2aXBwcy5ubyIsImV4cCI6MTY0NDc0Mzg5NywiYWNjb3VudE51bWJlciI6IjE4MDAwMDAwMDAwIn0.mqO4RsidM_-twRfCvgNnXUUPrXaTgFVMvkJTVmJgtmbHziMVxHnG9moHpEj90_A3MRPp_jucdgMnqixgExOykJCLX6VsiUB0qMLXTgBE7Mmkz3lk0jCgv7OwYDJuLksrXvLepD68KdyDTCVwPxdgqh_H9Tea7S3gSYUnYoNkNP5h7Eyvai6U7BuJVcoE5ckO1ZjGmOvNlfHUbAZYBH8I5RV96bnmEtdtkojrkoZtT7HjueyTZODfdaOyvI5VfMLKbr9qGkYKP0UBKTp9ST5eV-W_Y062PgOsfRNXL2-ltKgn0vDkpUWYGiA8Y98ondXLF1kQIc8pAFPAwhzWG31oM_wKeOjjjK-2lMg1X1LjTk-zbq0HBilhQzbXdW0PHws0p1UZgviW-bdIwRfcjn1ysEqzS0HzDuaRTGIQDeld3MrtcwLLce7PT4rSGZeoJM-pUTidztzX48pFUixLm-aa1-SWnbRIqUufmsylSJNZXjgS06pISGUMKPiAdSjINY17x8YkeptS1B_r56oshRY8BFffCPxtMJI1BAWYQBCQ8WvUadlWNrQ477kUuvauEPRK_eyXT83cANaEa39lBPz4J3PHAE6grV4c3G_rClFzaFl1mzrhUABKJ3CpP_q7LmkboXSI5xx0BkyIb4wG_eG1s7_E_P_T0hIj3CTBNZnu7mI
         - in: body
-          name: pspInitiatePaymentRequestDTO
-          description: pspInitiatePaymentRequestDTO
+          name: ProcessPaymentOnToken
+          description: ProcessPaymentOnToken
           required: true
           schema:
             $ref: '#/definitions/ProcessPaymentOnToken'
@@ -147,7 +153,7 @@ paths:
         '200':
           description: "OK"
           schema:
-            $ref: '#/definitions/PaymenentTokenRepresentation'
+            $ref: '#/definitions/PaymentTokenRepresentation'
         '400':
           description: Bad Request
           schema:
@@ -170,8 +176,8 @@ paths:
     delete:
       tags:
         - Vipps PSP API
-      summary: The details of PSP Payment
-      operationId: getPSPPaymentDetailsUsingGET
+      summary: Delete a payment agreement
+      operationId: deletePSPPaymenAgreementUsingDELETE
       produces:
         - application/json
       parameters:
@@ -199,12 +205,12 @@ paths:
           required: true
           type: string
           default: C948DFD1546347568874C4DDC93A2E3C
-        - in: body
-          name: DeletePaymentRequest
-          description: DeletePaymentRequest
+        - name: userToken
+          in: header
+          description: JWT-TOKEN
           required: true
-          schema:
-            $ref: '#/definitions/DeletePaymentRequest'
+          type: string
+          default: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb25OdW1iZXIiOiI5MTg3MTM4NjciLCJpc3MiOiJ2aXBwcy5ubyIsImV4cCI6MTY0NDc0Mzg5NywiYWNjb3VudE51bWJlciI6IjE4MDAwMDAwMDAwIn0.mqO4RsidM_-twRfCvgNnXUUPrXaTgFVMvkJTVmJgtmbHziMVxHnG9moHpEj90_A3MRPp_jucdgMnqixgExOykJCLX6VsiUB0qMLXTgBE7Mmkz3lk0jCgv7OwYDJuLksrXvLepD68KdyDTCVwPxdgqh_H9Tea7S3gSYUnYoNkNP5h7Eyvai6U7BuJVcoE5ckO1ZjGmOvNlfHUbAZYBH8I5RV96bnmEtdtkojrkoZtT7HjueyTZODfdaOyvI5VfMLKbr9qGkYKP0UBKTp9ST5eV-W_Y062PgOsfRNXL2-ltKgn0vDkpUWYGiA8Y98ondXLF1kQIc8pAFPAwhzWG31oM_wKeOjjjK-2lMg1X1LjTk-zbq0HBilhQzbXdW0PHws0p1UZgviW-bdIwRfcjn1ysEqzS0HzDuaRTGIQDeld3MrtcwLLce7PT4rSGZeoJM-pUTidztzX48pFUixLm-aa1-SWnbRIqUufmsylSJNZXjgS06pISGUMKPiAdSjINY17x8YkeptS1B_r56oshRY8BFffCPxtMJI1BAWYQBCQ8WvUadlWNrQ477kUuvauEPRK_eyXT83cANaEa39lBPz4J3PHAE6grV4c3G_rClFzaFl1mzrhUABKJ3CpP_q7LmkboXSI5xx0BkyIb4wG_eG1s7_E_P_T0hIj3CTBNZnu7mI
       responses:
         '200':
           description: OK
@@ -231,7 +237,7 @@ paths:
     post:
       tags:
         - Endpoints required by Vipps at the PSP
-      summary: D
+      summary:
         Service end-point exposed by PSP. Used to transfer credit card data from TSP to PSP to complete initialized transaction.
         Outcome of transactional processing (RESERVE|CAPTURE|REJECT) will be shown at PSP payment console but Vipps must be informed if payment is refused (credit card expired, not enough funds etc) or OK.
 
@@ -431,7 +437,7 @@ definitions:
         example: 'https://psp.vipps.io'
         description: Vipps URL where customer can enter their mobile number
     title: PaymentInitiationRepresentation
-  PaymenentTokenRepresentation:
+  PaymentTokenRepresentation:
     type: object
     properties:
       pspTransactionId:
@@ -442,9 +448,7 @@ definitions:
         type: string
         example: 8874C4DDC93A2E3C
         description: Uniquely identifies a payment order for a merchant
-      makePayment:
-        $ref: '#/definitions/MakePaymentRequest'
-    title: PaymenentTokenRepresentation
+    title: PaymentTokenRepresentation
   MakePaymentRequest:
     type: object
     properties:
@@ -454,32 +458,28 @@ definitions:
         description: Used as a globally unique transaction reference for the PSP systems
       merchantSerialNumber:
         type: string
+        description: The Vipps number (MSN) for the sales unit
+        minLength: 6
+        maxLength: 6
         example: 123456
-        description: Identifies a merchant
+        pattern: '^\d{6}$'
       cardData:
         type: string
         example: 'f0a29801b4#d4ff30e221fa2980ff30e2'
         description: Encrypted credit card details
-      userToken:
-        type: string
-        example: 12345ab
-        description: Optional field. Returned when the transaction provides user information (For example recurring).
       confirmed:
         type: string
-        example: YES/TIMEOUT/CANCEL
+        example: YES
         description: Credit Card Details Encryption Status
         enum:
           - YES
           - TIMEOUT
           - CANCEL
-    title: MakePaymentRequest
-  DeletePaymentRequest:
-    type: object
-    properties:
       userToken:
+        description: JWT-TOKEN
         type: string
-        example: 12345ab
-        description: Optional field. Returned when the transaction provides user information (For example recurring).
+        example: eyJh123
+    title: MakePaymentRequest
   MakePaymentResponse:
     type: object
     properties:
@@ -571,10 +571,6 @@ definitions:
         type: string
         example: 'Description of payment'
         description: Text to be displayed to end user
-      userToken:
-        type: string
-        example: 12345ab
-        description: Mandatory field. Returned in the makepayment call when the transaction provides claims. (For example recurring). browser
     title: ProcessPaymentOnToken
   PaymentDetailsRepresentation:
     type: object
