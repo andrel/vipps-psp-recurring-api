@@ -17,17 +17,21 @@ User -> VippsApp: Approve
 VippsApp -> VippsBackend: Return approval
 VippsBackend -> VippsBackend: Save approval with userToken
 
-
 VippsBackend -> PSP: Makepayment request with userToken
 PSP -> VippsBackend: 200 OK Reserve OK
 
 ...
 
 PSP -> VippsBackend: /Payments with userToken on /payments
+
+activate VippsBackend
 VippsBackend -> VippsBackend: Verify userToken
+group Makepayment reservation
 VippsBackend -> PSP: Makepayment info with userToken
 PSP -> VippsBackend: 200 OK Reserve OK
+end
 VippsBackend -> PSP: 200 OK
+deactivate VippsBackend
 
 
 
