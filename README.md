@@ -10,4 +10,4 @@ See the [Vipps Developers repository](https://github.com/vippsas/vipps-developer
 
 As the recurring extension builds upon PSPv2, the [PSPv2 Guide](https://github.com/vippsas/vipps-psp-recurring/blob/master/vipps-psp-api.md) still apllies.
 
-You can peruse the API reference documentation as [Swagger](https://github.com/vippsas/vipps-psp-recurring/blob/master/docs/swagger.yaml) (not currently hosted, please use the [Swagger editor](https://editor.swagger.io/)).
+You can peruse the API reference documentation as [Swagger](https://vippsas.github.io/vipps-psp-recurring-api/).
