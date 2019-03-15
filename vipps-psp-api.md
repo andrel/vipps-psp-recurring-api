@@ -84,6 +84,9 @@ Authorization: makePaymentToken
   }
 }
 ```
+### Status Updates
+
+To provide a consistent user experience it is important that Vipps is notified by changes to the payment status when it is captured, cancelled or refunded. Vipps also provides an endpoint to check the payment status.
 
 ## Idempotency
 
@@ -130,10 +133,6 @@ to successfully authenticate every API call.
 
 Note 93 is for when the makePayment request from Vipps contains the statuses CANCEL or TIMEOUT. Cancel is when the user cancels in the Vipps app, and TimeOut is when the user does not act on the payment.
 
-### Status Updates
-
-To provide a consistent user experience it is important that Vipps is notified by changes to the payment status when it is captured, cancelled or refunded. Vipps also provides an endpoint to check the payment status.
-
 
 ## HTTP responses
 
@@ -170,9 +169,9 @@ The PSP API supports recurring payments out of the box. This enables the PSP to 
 
 As of now, there are two possible ways to perform a recurring payment - *subscription* and *oneclick*. These are referred to as the *scope* of the recurring agreement. Only one *scope* can be used at a time, and it's not possible to change the scope of an agreement.
 
-*Subscription* based payments are created as a consent to an agreement that allows the PSP to withdraw money on unknown intervals. This implies that the user won't have to accept the payment on each occasion, only the first one when consenting to the agreement. An example of this could be a subscription to a music streaming service.
+*Subscription* based payments are created as a consent to an agreement that allows withdrawal of money on intervals. This implies that the user won't have to accept the payment on each occasion, only the first occasion when consenting to the agreement. An example of this could be a subscription to a music streaming service paid monthly. 
 
-*Oneclick* payments are created as agreements where the user will be prompted on each payment. An example of a oneclick payment might be a ticketing service where the user will get prompted to buy a new ticket when the old one expires. Instead of switching to the app to accept the payment, the user already has a oneclick recurring agreement with Vipps as the payment source, and the ticketing app won´t need to involve the Vipps app at all.
+*Oneclick* payments are created as agreements where the user will be prompted on each payment. An example of a oneclick payment might be a ticketing service where the user will get prompted to buy a new ticket when the old one expires. Instead of switching to the app to accept the payment, the user already has a oneclick recurring agreement with Vipps as the payment source. 
 
 ## Initialize a recurring payment
 
