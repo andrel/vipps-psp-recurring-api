@@ -238,6 +238,9 @@ HEADER: "
 }
 ```
 
+## Recurring payment flow
+![PSP API sequence diagram](diagrams/RecurringSequence_sync_with_makePayment.png)
+
 # Questions?
 
 We're always happy to help with code or other questions you might have!
