@@ -514,11 +514,11 @@ definitions:
         description: ISO 4217 defined currency code. Currently Vipps only supports NOK
       pspRedirectUrl:
         type: string
-        example: 'https://psp.vipps.io'
+        example: 'https://pspRedirectURL'
         description: Vipps will use this URL to redirect end user after payment confirmation
       makePaymentUrl:
         type: string
-        example: 'https://psp.vipps.io'
+        example: 'https://makePaymentURL'
         description: PSP URL used by Vipps to send the card data
       makePaymentToken:
         type: string
@@ -536,7 +536,7 @@ definitions:
         $ref: '#/definitions/Scope'
       agreementUrl:
         type: string
-        example: 'https://merchant.com/mypage/123'
+        example: 'https://merchantAgreementURL'
         description: Url that will link a payment agreement with a merchant's agreement terms or profile pages.
     title: InitiatePaymentRequest
   ProcessPaymentOnToken:
@@ -561,7 +561,7 @@ definitions:
         description: ISO 4217 defined currency code. Currently Vipps only supports NOK
       makePaymentUrl:
         type: string
-        example: 'https://psp.vipps.io'
+        example: 'https://makePaymentURL'
         description: PSP URL used by Vipps to send the card data
       makePaymentToken:
         type: string
