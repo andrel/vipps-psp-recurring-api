@@ -434,7 +434,7 @@ definitions:
         description: Uniquely identifies a payment order for a merchant
       vippsRedirectUrl:
         type: string
-        example: 'https://psp.vipps.io'
+        example: 'https://redirectURL'
         description: Vipps URL where customer can enter their mobile number
     title: PaymentInitiationRepresentation
   PaymentTokenRepresentation:
