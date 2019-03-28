@@ -142,7 +142,7 @@ As of now, there are two possible ways to perform a recurring payment - *subscri
 
 Initializing a recurring payment works in the same way as a non-recurring payment, but with the inclusion of a *scope* and *agreementURL* in the init call.
 
-The *scope* can at the time be set to either *subscription* or *oneclick*. The *agreementURL* should be a link to where the user can click to administer the agreement.
+The *scope* can at the time be set to either *psp_subscription* or *psp_one_click*. The *agreementURL* should be a link to where the user can click to administer the agreement.
 
 To start the initialization, create a standard /init call with the addition of the required fields. If you want to initialize a recurring *subscription*, the init request body could look like this.
 
@@ -157,8 +157,8 @@ To start the initialization, create a standard /init call with the addition of t
   "isApp": false,
   "pspTransactionId": "{{psptransactionid}}",
   "paymentText": "Order id: 213213",
-  "scope": "subscription",
-  "agreementURL": "linkToTheAgreement"
+  "scope": "psp_subscription",
+  "merchantAgreementUrl": "linkToTheAgreement"
 }
 ```
 
