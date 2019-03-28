@@ -140,7 +140,7 @@ As of now, there are two possible ways to perform a recurring payment - *subscri
 
 ## Initialize a recurring payment
 
-Initializing a recurring payment works in the same way as a non-recurring payment, but with the inclusion of a *scope* and *agreementURL* in the init call.
+Initializing a recurring payment works in the same way as a non-recurring payment, but with the inclusion of a *scope* and *merchantAgreementUrl* in the init call.
 
 The *scope* can at the time be set to either *psp_subscription* or *psp_one_click*. The *agreementURL* should be a link to where the user can click to administer the agreement.
 
