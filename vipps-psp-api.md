@@ -39,7 +39,7 @@ See the [Vipps PSP API Checklist](vipps-psp-api-checklist.md) for details.
 ### Initiate payment
 
 A payment request is initiated by the PSP to the Vipps API after the user has
-request to pay with Vipps. Vipps then returns a link to
+requested to pay with Vipps. Vipps then returns a link to
 the Vipps landing page where the user can confirm the mobile number.
 Once the user has confirmed the number, the payment can be considered initiated.
 
