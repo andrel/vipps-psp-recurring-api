@@ -217,8 +217,8 @@ Error responses has this format:
 The error message might change, and you should not base any application logic on it.
 
 These are the possible error codes and messages:
-| errorCode        | errorMessage                                                   |comment                                              |
-| ---------------- | -------------------------------------------------------------- |---------------------------------------------------- |
+| errorCode        | errorMessage                                                   | comment                                             |
+| ---------------- | -------------------------------------------------------------- | --------------------------------------------------- |
 | `21`             | Merchant not available or active                               |													  |
 | `22`             | OrderId must be unique.                                        |													  |
 | `31`             | User is not registered with VIPPS                              |													  |
