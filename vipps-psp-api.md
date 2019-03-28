@@ -112,28 +112,6 @@ to successfully authenticate every API call.
 | Ocp-Apim-Subscription-Key | Base 64 encoded string | Subscription key for the product.<br>Can be found in Vipps developer portal |
 
 
-## Error codes
-
-| errorId | errorText                            |
-| ------- | ------------------------------------ |
-| 71      | Invalid request                      |
-| 72      | Different texts                      |
-| 81      | No such issuer                       |
-| 82      | Refused by Issuer                    |
-| 83      | Suspected fraud                      |
-| 84      | Exceeds withdrawal amount limit      |
-| 85      | Response received to late            |
-| 86      | Expired card                         |
-| 87      | Invalid card number (no such number) |
-| 88      | Merchant does not allow credit cards |
-| 89      | Insufficient funds                   |
-| 91      | Internal error                       |
-| 92      | Unable to decrypt                    |
-| 93      | Status from Vipps:CANCEL or Status from Vipps:TIMEOUT |
-
-Note 93 is for when the makePayment request from Vipps contains the statuses CANCEL or TIMEOUT. Cancel is when the user cancels in the Vipps app, and TimeOut is when the user does not act on the payment.
-
-
 ## HTTP responses
 
 This API returns the following HTTP statuses in the responses:
@@ -147,19 +125,6 @@ This API returns the following HTTP statuses in the responses:
 | `404 Not Found`     | The resource was not found  |
 | `500 Server Error`  | An internal Vipps problem.                  |
 
-### Error codes
-
-| errorCode        | errorMessage                               |
-| ---------------- | ------------------------------------------ |
-| `21`             | Merchant not available or active           |
-| `42`             | Invalid payment model type                 |
-| `51`             | Invalid request                            |
-| `99`             | PSP Transaction id already exists in Vipps |
-| `51`             | Invalid pspRedirectUrl                     |
-| `99`             | OrderId already exists                     |
-| `amount`         | amount.less.than.one                       |
-| `currency`       | transaction.currency.invalid               |
-| `makePaymentUrl` | Invalid makePaymentUrl                     |
 
 # Recurring PSP payments
 
@@ -237,6 +202,38 @@ HEADER: "
   "paymentText": "Description of payment"
 }
 ```
+
+## Error responses
+Error responses has this format:
+
+```json
+[
+    {
+        "errorCode": "99",
+        "errorMessage": "OrderId already exists"
+    }
+]
+```
+The error message might change, and you should not base any application logic on it.
+
+These are the possible error codes and messages:
+| errorCode        | errorMessage                                                   |comment
+| ---------------- | -------------------------------------------------------------- |--------------------------------------------
+| `21`             | Merchant not available or active                               |     
+| `22`             | OrderId must be unique.                                        |
+| `31`             | User is not registered with VIPPS                              |
+| `32`             | User is not registered with VIPPS                              |
+| `42`             | Invalid payment model type                                     |
+| `43`             | PSP Id not enrolled in Vipps.                                  |
+| `44`             | TransactionId already exist                                    |
+| `45`             | Payment execution failed                                       |
+| `101`            | User Token is invalid                                          |
+| `111`            | Agreement not found                                            |
+| `1501`           | Vipps users below 15 can not pay to companies.                 |
+| `1502`           | Vipps users below 15 years can only pay to friends and family. |
+| `51`             | <Various messages>                                             | For Invalid requests
+| `99`             | <Various messages>                                             | For unhandled exceptions
+| `makePaymentUrl` | Invalid makePaymentUrl                                         | Validation failed for the field given in errorcode. |
 
 ## Recurring payment flow
 ![PSP API sequence diagram](diagrams/RecurringSequence_sync_with_makePayment.png)
