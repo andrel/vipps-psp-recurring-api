@@ -231,8 +231,8 @@ These are the possible error codes and messages:
 | `111`            | Agreement not found                                            |													  |
 | `1501`           | Vipps users below 15 can not pay to companies.                 |													  |
 | `1502`           | Vipps users below 15 years can only pay to friends and family. |													  |
-| `51`             | <Various messages>                                             | For Invalid requests								  |
-| `99`             | <Various messages>                                             | For unhandled exceptions							  |
+| `51`             | Various messages                                               | For Invalid requests								  |
+| `99`             | Various messages                                               | For unhandled exceptions							  |
 | `makePaymentUrl` | Invalid makePaymentUrl                                         | Validation failed for the field given in errorcode. |
 
 ## Recurring payment flow
