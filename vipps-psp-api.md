@@ -187,18 +187,17 @@ After initialisation, the next payment can be made by passing your *userToken* t
 
 ```json
 HEADER: "
-        Authorization: asd123
-        Ocp-Apim-Subscription-Key: asdf234
-        PSP-ID: sdf421
-        Meerchant-Serial-Number: dsdf322
-        UserToken: 123abc
+        Authorization: ey...
+        Ocp-Apim-Subscription-Key: a7a5....
+        PSP-ID: PSP1234
+        Merchant-Serial-Number: 123456
+        User-Token: ey...
         "
 {
   "pspTransactionId": "123",
   "merchantOrderId": "123ABCD",
   "amount": 100,
-  "currency": "NOK",
-  "makePaymentUrl": "http://yourPaymentUrl",
+  "makePaymentUrl": "https://yourPaymentUrl.com/path",
   "makePaymentToken": "token123",
   "paymentText": "Description of payment"
 }
