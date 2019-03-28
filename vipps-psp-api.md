@@ -172,10 +172,11 @@ A *userToken* contains the *scope* of the consent, in the claim named *scope*. T
 
 ```
 {
-  "sub" // agreement_id
-  "aud" // audience (usually something like "https://vipps.no")
-  "iat" // issue_day_time
-  "scope"
+  "sub" // The agreement id
+  "iss" // The issuer ("Vipps")
+  "aud" // The token audience (usually something like "https://vipps.no")
+  "iat" // Issued at, epoch time in seconds.
+  "scope" //psp_subscription or psp_one_click
 }
 ```
 
