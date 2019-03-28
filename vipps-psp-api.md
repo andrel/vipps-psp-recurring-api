@@ -233,7 +233,7 @@ These are the possible error codes and messages:
 | `1502`           | Vipps users below 15 years can only pay to friends and family. |
 | `51`             | <Various messages>                                             | For Invalid requests
 | `99`             | <Various messages>                                             | For unhandled exceptions
-| `makePaymentUrl` | Invalid makePaymentUrl                                         | Validation failed for the field given in errorcode. |
+| `makePaymentUrl` | Invalid makePaymentUrl                                         | Validation failed for the field given in errorcode.
 
 ## Recurring payment flow
 ![PSP API sequence diagram](diagrams/RecurringSequence_sync_with_makePayment.png)
