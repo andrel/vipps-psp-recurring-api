@@ -217,23 +217,23 @@ Error responses has this format:
 The error message might change, and you should not base any application logic on it.
 
 These are the possible error codes and messages:
-| errorCode        | errorMessage                                                   |comment
-| ---------------- | -------------------------------------------------------------- |--------------------------------------------
-| `21`             | Merchant not available or active                               |     
-| `22`             | OrderId must be unique.                                        |
-| `31`             | User is not registered with VIPPS                              |
-| `32`             | User is not registered with VIPPS                              |
-| `42`             | Invalid payment model type                                     |
-| `43`             | PSP Id not enrolled in Vipps.                                  |
-| `44`             | TransactionId already exist                                    |
-| `45`             | Payment execution failed                                       |
-| `101`            | User Token is invalid                                          |
-| `111`            | Agreement not found                                            |
-| `1501`           | Vipps users below 15 can not pay to companies.                 |
-| `1502`           | Vipps users below 15 years can only pay to friends and family. |
-| `51`             | <Various messages>                                             | For Invalid requests
-| `99`             | <Various messages>                                             | For unhandled exceptions
-| `makePaymentUrl` | Invalid makePaymentUrl                                         | Validation failed for the field given in errorcode.
+| errorCode        | errorMessage                                                   |comment                                              |
+| ---------------- | -------------------------------------------------------------- |---------------------------------------------------- |
+| `21`             | Merchant not available or active                               |													  |
+| `22`             | OrderId must be unique.                                        |													  |
+| `31`             | User is not registered with VIPPS                              |													  |
+| `32`             | User is not registered with VIPPS                              |													  |
+| `42`             | Invalid payment model type                                     |													  |
+| `43`             | PSP Id not enrolled in Vipps.                                  |													  |
+| `44`             | TransactionId already exist                                    |													  |
+| `45`             | Payment execution failed                                       |													  |
+| `101`            | User Token is invalid                                          |													  |
+| `111`            | Agreement not found                                            |													  |
+| `1501`           | Vipps users below 15 can not pay to companies.                 |													  |
+| `1502`           | Vipps users below 15 years can only pay to friends and family. |													  |
+| `51`             | <Various messages>                                             | For Invalid requests								  |
+| `99`             | <Various messages>                                             | For unhandled exceptions							  |
+| `makePaymentUrl` | Invalid makePaymentUrl                                         | Validation failed for the field given in errorcode. |
 
 ## Recurring payment flow
 ![PSP API sequence diagram](diagrams/RecurringSequence_sync_with_makePayment.png)
