@@ -155,7 +155,7 @@ To start the initialization, create a standard /init call with the addition of t
   "currency": "NOK",
   "merchantOrderId": "123123123",
   "isApp": false,
-  "pspTransactionId": "{{psptransactionid}}",
+  "pspTransactionId": "psptransactionid",
   "paymentText": "Order id: 213213",
   "scope": "psp_subscription",
   "merchantAgreementUrl": "linkToTheAgreement"
@@ -172,10 +172,10 @@ A *userToken* contains the *scope* of the consent, in the claim named *scope*. T
 
 ```
 {
-  "sub" // The agreement id
-  "iss" // The issuer ("Vipps")
-  "aud" // The token audience (usually something like "https://vipps.no")
-  "iat" // Issued at, epoch time in seconds.
+  "sub"   // The agreement id
+  "iss"   // The issuer ("Vipps")
+  "aud"   // The token audience (usually something like "https://vipps.no")
+  "iat"   // Issued at, epoch time in seconds.
   "scope" //psp_subscription or psp_one_click
 }
 ```
